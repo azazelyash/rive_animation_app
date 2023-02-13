@@ -87,6 +87,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
                               fontSize: 14,
+                              color: Colors.black54,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -126,6 +127,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
+                          color: Colors.black45,
                           fontSize: 13,
                         ),
                       ),
@@ -146,122 +148,134 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       barrierLabel: "Sign In",
       context: context,
       pageBuilder: (context, _, __) => Center(
-        child: Container(
-          height: 600,
-          margin: const EdgeInsets.symmetric(
-            horizontal: 16,
-          ),
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.95),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(40),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: Container(
+            height: 620,
+            margin: const EdgeInsets.symmetric(
+              horizontal: 16,
             ),
-          ),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 26.0,
-                    vertical: 16,
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "Sign In",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        textAlign: TextAlign.center,
-                        "This app was created by Yash Vishwakarma, to understand the use of Rive Animation in Flutter Applications.",
-                        style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-
-                      /* ---------------------------------- Form ---------------------------------- */
-
-                      const PopupBox(),
-
-                      /* --------------------------------- Or Part -------------------------------- */
-
-                      Row(
-                        children: const <Widget>[
-                          Expanded(child: Divider()),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 8.0,
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.85),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(32),
+              ),
+            ),
+            child: Scaffold(
+              backgroundColor: Colors.transparent,
+              body: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 26.0,
+                      vertical: 16,
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Sign In",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.w600,
                             ),
-                            child: Text(
-                              "Or",
-                              style: TextStyle(
-                                color: Colors.black26,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          textAlign: TextAlign.center,
+                          "This app was created by Yash Vishwakarma, to understand the use of Rive Animation in Flutter Applications.",
+                          style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                              color: Colors.black45,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+
+                        /* ---------------------------------- Form ---------------------------------- */
+
+                        const PopupBox(),
+
+                        /* --------------------------------- Or Part -------------------------------- */
+
+                        Row(
+                          children: const <Widget>[
+                            Expanded(child: Divider()),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                              ),
+                              child: Text(
+                                "Or",
+                                style: TextStyle(
+                                  color: Colors.black26,
+                                ),
+                              ),
+                            ),
+                            Expanded(child: Divider()),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 20.0,
+                          ),
+                          child: Text(
+                            "Signin Using Email, Apple or Google",
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                color: Colors.black54,
                               ),
                             ),
                           ),
-                          Expanded(child: Divider()),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 20.0,
                         ),
-                        child: Text(
-                          "Signin Using Email, Apple or Google",
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              color: Colors.black54,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: const <Widget>[
+                            signinButton(
+                              text: "assets/icons/email_box.svg",
                             ),
-                          ),
+                            signinButton(
+                              text: "assets/icons/google_box.svg",
+                            ),
+                            signinButton(
+                              text: "assets/icons/apple_box.svg",
+                            ),
+                          ],
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const <Widget>[
-                          signinButton(
-                            text: "assets/icons/email_box.svg",
-                          ),
-                          signinButton(
-                            text: "assets/icons/google_box.svg",
-                          ),
-                          signinButton(
-                            text: "assets/icons/apple_box.svg",
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: -18,
-                  child: CircleAvatar(
-                    radius: 16,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.close,
-                      color: Colors.black,
+                      ],
                     ),
                   ),
-                ),
-              ],
+
+                  /* ------------------------------ Close Button ------------------------------ */
+
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: -22,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: CircleBorder(),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Icon(
+                        Icons.close,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
